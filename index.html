@@ -3,27 +3,30 @@
         <title>Replacing Text</title>
         <script language="JavaScript">
             var msgIX = 0
+            var intervalId
             var msgs = new Array(
                     "Notice anything different?",
                     "The text you are looking at has changed.",
                     "This is a handy way of sending messages to your users."
             )
 
-            function displayMessage(milliseconds) {
-                if(msgIX < msgs.length){
-                if(document.getElementById != null) {
-                    var heading = document.getElementById("scrollme")
-                    heading.firstChild.nodeValue = msgs[msgIX]
-                }else{
-                    if(navigator.appName == "Microsoft Internet Explorer") {
-                        var heading = document.all.item("scrollme")
-                        heading.innerText = msgs[msgIX]
-                    }
-                }
-                ++msgIX;
-                window.setTimeout(function(){displayMessage(milliseconds);},milliseconds);
-
+            function periodic(milliseconds){
+                intervalId = window.setInterval(function(){displayMessage();},milliseconds);
             }
+
+            function displayMessage() {
+                if(msgIX < msgs.length){
+                    if(document.getElementById != null) {
+                        var heading = document.getElementById("scrollme")
+                        heading.firstChild.nodeValue = msgs[msgIX]
+                    }else{
+                        if(navigator.appName == "Microsoft Internet Explorer") {
+                            var heading = document.all.item("scrollme")
+                            heading.innerText = msgs[msgIX]
+                        }
+                    }
+                    ++msgIX;
+                }
             }
         </script>
     </head>        
@@ -2621,7 +2624,7 @@
 
         </div>
     </div>
-    <body onload=" window.setTimeout(function(){displayMessage(5000);},5000);">
+    <body onload=" function(){periodic(5000);">
         <h1 align="center" id="scrollme">Watch this text very carefully!</h1>
     </body>
 </html>
