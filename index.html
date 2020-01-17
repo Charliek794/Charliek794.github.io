@@ -14,16 +14,71 @@
                 color: yellow;
             }
         </style>
+
+        <script>
+        function clickCounter() {
+            if (typeof(Storage) !== "undefined") {
+                // Store
+                localStorage.setItem("lastname", "Smith");
+                // Retrieve
+                //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+                if (localStorage.clickcount) {
+                    localStorage.clickcount = Number(localStorage.clickcount)+1;
+                } else {
+                    localStorage.clickcount = 1;
+                }
+                if (sessionStorage.clickcount) {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+                } else {
+                    sessionStorage.clickcount = 1;
+                }
+                document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+                document.getElementById("result1").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+                document.getElementById("result1").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+        </script>
+
     </head>
     <body style="background-color:powderblue;">
+
+        <p><button onclick="clickCounter()" type="button">Click me!</button></p>
+        <div id="result"></div>
+        <div id="result1"></div>
+        <p>Click the button to see the counter increase.</p>
+        <p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+
         <h1 title="I'm a header" style="text-align:center;">Hello World</h1>
         <a href="https://www.w3schools.com/html/html_examples.asp">This is a link</a>
+        <p><a href="#p01">Jump to "I am different."</a></p>
+        <p>Locked in a frame? <a href="https://www.w3schools.com/html/" target="_top">Click here!</a></p>
+        <p>
+            This is another mailto link:
+            <a href="mailto:someone@example.com?cc=someoneelse@example.com&bcc=andsomeoneelse@example.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!" target="_top">Send mail!</a>
+        </p>
+
+        <p>The link will only work if you have email installed.</p>
+
+        <p>(Spaces between words should be replaced by %20 to ensure that the browser will display the text properly)</p>
         <h2>Heading 2</h2>
+        <p id="demo"></p>
+
+        <script>
+        document.getElementById("demo").innerHTML = "Hello JavaScript!";
+        </script>
+
+        <noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+        <p>A browser without support for JavaScript will show the text written inside the noscript element.</p>
         <h3>Heading 3</h3>
         <h4>Heading 4</h4>
         <h5>Heading 5</h5>
         <h6>Heading 6</h6>
         <hr>
+        <a href="https://www.w3schools.com/html/" target="_blank">Visit our HTML tutorial!</a> 
+        <p>If you set the target attribute to "_blank", the link will open in a new browser window or tab.</p>
         <div style="position:relative;">
           <div style="opacity:0.5;position:absolute;left:50px;top:-30px;width:300px;height:150px;background-color:#40B3DF"></div>
           <div style="opacity:0.3;position:absolute;left:120px;top:20px;width:100px;height:170px;background-color:#73AD21"></div>
