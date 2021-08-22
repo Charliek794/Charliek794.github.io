@@ -1,37 +1,9 @@
 <html>
     <head>
         <title>Replacing Text</title>
-        <script language="JavaScript">
-            var msgIX = 0
-            var intervalId
-            var msgs = new Array(
-                    "Notice anything different?",
-                    "The text you are looking at has changed.",
-                    "This is a handy way of sending messages to your users."
-            )
-
-            function periodic(milliseconds){
-                intervalId = window.setInterval(function(){displayMessage();},milliseconds);
-            }
-
-            function displayMessage() {
-                if(msgIX < msgs.length){
-                    if(document.getElementById != null) {
-                        var heading = document.getElementById("scrollme")
-                        heading.firstChild.nodeValue = msgs[msgIX]
-                    }else{
-                        if(navigator.appName == "Microsoft Internet Explorer") {
-                            var heading = document.all.item("scrollme")
-                            heading.innerText = msgs[msgIX]
-                        }
-                    }
-                    ++msgIX;
-                }
-            }
-        </script>
     </head>        
 
-    <body onload="periodic(5000);">
+    <body>
         <a href="Story.html">Story game</a>
     </body>
 </html>
